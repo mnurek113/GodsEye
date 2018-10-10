@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="140dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/logo" />
+
+    <EditText
+        android:id="@+id/login_editText"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="textPersonName"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Hasło"
+        android:inputType="textPassword"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/repeat_password_editText"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Powtórz hasło"
+        android:inputType="textPassword"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/log_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/holo_blue_dark"
+        android:fontFamily="sans-serif-medium"
+        android:text="Zatwierdź"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+
+</LinearLayout>
