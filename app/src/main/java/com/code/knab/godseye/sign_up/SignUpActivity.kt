@@ -1,7 +1,8 @@
-package com.code.knab.godseye
+package com.code.knab.godseye.sign_up
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.code.knab.godseye.R
 
 class SignUpActivity : AppCompatActivity() {
 
