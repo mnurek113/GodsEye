@@ -16,7 +16,7 @@
         android:src="@mipmap/logo" />
 
     <EditText
-        android:id="@+id/login_editText"
+        android:id="@+id/loginEditText"
         android:layout_width="235dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -25,7 +25,7 @@
         android:textSize="17sp" />
 
     <EditText
-        android:id="@+id/password_editText"
+        android:id="@+id/passwordEditText"
         android:layout_width="235dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -34,7 +34,7 @@
         android:textSize="17sp" />
 
     <EditText
-        android:id="@+id/repeat_password_editText"
+        android:id="@+id/repeatPasswordEditText"
         android:layout_width="235dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -43,7 +43,7 @@
         android:textSize="17sp" />
 
     <Button
-        android:id="@+id/log_in"
+        android:id="@+id/logIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear_layout"
