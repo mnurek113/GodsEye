@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 class LoginActivity : AppCompatActivity(), LoginMVP.View {
 
 
-    private var sharedPrefs: SharedPreferences = getSharedPreferences("UserData",Context.MODE_PRIVATE)
+    private lateinit var sharedPrefs: SharedPreferences
     private var loginModel: LoginModel = LoginModel()
     private var loginPresenter: LoginPresenter = LoginPresenter(loginModel, this)
 
@@ -29,10 +29,12 @@ class LoginActivity : AppCompatActivity(), LoginMVP.View {
         log_in.setOnClickListener {
             login()
         }
+
+        sharedPrefs = getSharedPreferences("UserData",Context.MODE_PRIVATE)
     }
 
     private fun login() {
-        loginPresenter.logIn(loginEditText.text.toString(), passwordEditText.text.toString(), sharedPrefs)
+        loginPresenter.logIn(loginEditText?.text.toString(), passwordEditText?.text.toString(), sharedPrefs)
     }
 
     override fun onLoginSuccessful() {
@@ -42,7 +44,7 @@ class LoginActivity : AppCompatActivity(), LoginMVP.View {
 
     override fun onLoginFailed() {
 
-        Toast.makeText(applicationContext,"Podane hasło lub login są nieprawidłowe",Toast.LENGTH_SHORT)
+        Toast.makeText(this,"Podane hasło lub login są nieprawidłowe",Toast.LENGTH_SHORT).show()
         password_editText.setText("")
         login_editText.setText("")
     }
