@@ -12,11 +12,12 @@ import com.code.knab.godseye.login.LoginActivity
 import com.code.knab.godseye.sign_up.mvp.SignUpModel
 import com.code.knab.godseye.sign_up.mvp.SignUpPresenter
 import com.code.knab.godseye.sign_up.mvp.SignUpMVP
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity(), SignUpMVP.View {
 
-    private var sharedPrefs: SharedPreferences = getSharedPreferences("UserData",Context.MODE_PRIVATE)
+    private lateinit var sharedPrefs: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
     private var signUpModel: SignUpModel = SignUpModel()
@@ -31,10 +32,16 @@ class SignUpActivity : AppCompatActivity(), SignUpMVP.View {
             signUp()
         }
 
+        sharedPrefs = getSharedPreferences("UserData",Context.MODE_PRIVATE)
+
+
     }
 
     private fun signUp() {
         signUpPresenter.save(loginEditText.text.toString(),passwordEditText.text.toString(),repeatPasswordEditText.text.toString(),sharedPrefs)
+        loginEditText.setText("")
+        passwordEditText.setText("")
+        repeatPasswordEditText.setText("")
 
     }
 
@@ -44,7 +51,7 @@ class SignUpActivity : AppCompatActivity(), SignUpMVP.View {
     }
 
     override fun signUpFailed() {
-        Toast.makeText(applicationContext,"Podane hasła nie są takie same",Toast.LENGTH_SHORT)
+        Toast.makeText(applicationContext,"Podane hasła nie są takie same",Toast.LENGTH_SHORT).show()
         passwordEditText.setText("")
         repeatPasswordEditText.setText("")
 

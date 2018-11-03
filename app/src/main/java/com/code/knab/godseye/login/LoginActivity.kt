@@ -30,11 +30,16 @@ class LoginActivity : AppCompatActivity(), LoginMVP.View {
             login()
         }
 
+        sign_up.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
         sharedPrefs = getSharedPreferences("UserData",Context.MODE_PRIVATE)
     }
 
     private fun login() {
-        loginPresenter.logIn(loginEditText?.text.toString(), passwordEditText?.text.toString(), sharedPrefs)
+        loginPresenter.logIn(login_editText?.text.toString(), password_editText?.text.toString(), sharedPrefs)
     }
 
     override fun onLoginSuccessful() {
