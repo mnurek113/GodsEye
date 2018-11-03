@@ -16,11 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".sign_up.SignUpActivity"></activity>
 =======
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".KlasaRobocza"></activity>
 >>>>>>> origin/login_window
     </application>
 

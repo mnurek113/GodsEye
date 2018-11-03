@@ -1,6 +1,7 @@
 package com.code.knab.godseye.login
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,13 +10,14 @@ import com.code.knab.godseye.R
 import com.code.knab.godseye.login.mvp.LoginMVP
 import com.code.knab.godseye.login.mvp.LoginModel
 import com.code.knab.godseye.login.mvp.LoginPresenter
+import com.code.knab.godseye.sign_up.SignUpActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class LoginActivity : AppCompatActivity(), LoginMVP.View {
 
-    private var sharedPrefs: SharedPreferences = getPreferences(Context.MODE_PRIVATE)
-    private lateinit var editor: SharedPreferences.Editor
 
+    private var sharedPrefs: SharedPreferences = getSharedPreferences("UserData",Context.MODE_PRIVATE)
     private var loginModel: LoginModel = LoginModel()
     private var loginPresenter: LoginPresenter = LoginPresenter(loginModel, this)
 
@@ -24,42 +26,24 @@ class LoginActivity : AppCompatActivity(), LoginMVP.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        logIn.setOnClickListener {
+        log_in.setOnClickListener {
             login()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-
-    private fun setLogin() {
-
-        editor = sharedPrefs.edit()
-        editor.putString("login", "misiek123")
-        editor.putString("password", "password")
-        editor.apply()
-
-    }
-
     private fun login() {
-        loginPresenter.logIn(loginEditText.text.toString(), passwordEditText.text.toString())
+        loginPresenter.logIn(loginEditText.text.toString(), passwordEditText.text.toString(), sharedPrefs)
     }
 
     override fun onLoginSuccessful() {
-
+        val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onLoginFailed() {
 
+        Toast.makeText(applicationContext,"Podane hasło lub login są nieprawidłowe",Toast.LENGTH_SHORT)
+        password_editText.setText("")
+        login_editText.setText("")
     }
 }

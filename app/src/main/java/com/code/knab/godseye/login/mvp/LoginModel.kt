@@ -4,8 +4,10 @@ import android.content.SharedPreferences
 
 class LoginModel: LoginMVP.Model {
 
-    override fun logIn(login: String, password: String): Boolean {
-        if(login.equals("misiek123") && password.equals("password"))
+    override fun logIn(login: String, password: String, sharedPreferences: SharedPreferences): Boolean {
+
+
+        if(login.equals(sharedPreferences.getString("login",null)) && password.equals(sharedPreferences.getString("password",null)))
             return true
         return false
     }
